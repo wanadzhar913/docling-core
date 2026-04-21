@@ -984,13 +984,25 @@ def test_md_inline_group_no_spaces():
         label="text",
         parent=group,
         text="D",
-        formatting=Formatting(bold=True, italic=False, underline=False, strikethrough=False, script="baseline")
+        formatting=Formatting(
+            bold=True,
+            italic=False,
+            underline=False,
+            strikethrough=False,
+            script="baseline",
+        ),
     )
     doc.add_text(
         label="text",
         parent=group,
         text="ocling",
-        formatting=Formatting(bold=False, italic=False, underline=False, strikethrough=False, script="baseline")
+        formatting=Formatting(
+            bold=False,
+            italic=False,
+            underline=False,
+            strikethrough=False,
+            script="baseline",
+        ),
     )
 
     # This should serialize as "**D**ocling" without space
@@ -1011,17 +1023,31 @@ def test_html_inline_group_no_spaces():
         label="text",
         parent=group,
         text="Project",
-        formatting=Formatting(bold=True, italic=False, underline=False, strikethrough=False, script="baseline")
+        formatting=Formatting(
+            bold=True,
+            italic=False,
+            underline=False,
+            strikethrough=False,
+            script="baseline",
+        ),
     )
     doc.add_text(
         label="text",
         parent=group,
         text="ing",
-        formatting=Formatting(bold=False, italic=False, underline=False, strikethrough=False, script="baseline")
+        formatting=Formatting(
+            bold=False,
+            italic=False,
+            underline=False,
+            strikethrough=False,
+            script="baseline",
+        ),
     )
 
     # This should serialize as <strong>Project</strong>ing without space
-    ser = HTMLDocSerializer(doc=doc, params=HTMLParams(html_head="<head></head>", prettify=False))
+    ser = HTMLDocSerializer(
+        doc=doc, params=HTMLParams(html_head="<head></head>", prettify=False)
+    )
     actual = ser.serialize().text
 
     # Extract the body content between <body> and </body>
@@ -1030,9 +1056,7 @@ def test_html_inline_group_no_spaces():
     body_content = actual[start:end].strip()
 
     # Check that the span contains the expected content
-    assert '<strong>Project</strong>ing' in body_content
-
-
+    assert "<strong>Project</strong>ing" in body_content
 
 
 def test_md_inline_group_mixed_formatting_mid_word():
@@ -1046,7 +1070,13 @@ def test_md_inline_group_mixed_formatting_mid_word():
         label="text",
         parent=group,
         text="ing",
-        formatting=Formatting(bold=False, italic=True, underline=False, strikethrough=False, script="baseline")
+        formatting=Formatting(
+            bold=False,
+            italic=True,
+            underline=False,
+            strikethrough=False,
+            script="baseline",
+        ),
     )
 
     ser = MarkdownDocSerializer(doc=doc)
@@ -1067,10 +1097,18 @@ def test_html_inline_group_mixed_formatting_mid_word():
         label="text",
         parent=group,
         text="ing",
-        formatting=Formatting(bold=False, italic=True, underline=False, strikethrough=False, script="baseline")
+        formatting=Formatting(
+            bold=False,
+            italic=True,
+            underline=False,
+            strikethrough=False,
+            script="baseline",
+        ),
     )
 
-    ser = HTMLDocSerializer(doc=doc, params=HTMLParams(html_head="<head></head>", prettify=False))
+    ser = HTMLDocSerializer(
+        doc=doc, params=HTMLParams(html_head="<head></head>", prettify=False)
+    )
     actual = ser.serialize().text
 
     # Extract the body content between <body> and </body>
@@ -1079,7 +1117,7 @@ def test_html_inline_group_mixed_formatting_mid_word():
     body_content = actual[start:end].strip()
 
     # Check that both parts are present without spaces between
-    assert 'Pars<em>ing</em>' in body_content.replace('\n', ' ')
+    assert "Pars<em>ing</em>" in body_content.replace("\n", " ")
 
 
 def test_md_inline_group_single_part():
@@ -1103,7 +1141,9 @@ def test_html_inline_group_single_part():
     group = doc.add_inline_group()
     doc.add_text(label="text", parent=group, text="Single")
 
-    ser = HTMLDocSerializer(doc=doc, params=HTMLParams(html_head="<head></head>", prettify=False))
+    ser = HTMLDocSerializer(
+        doc=doc, params=HTMLParams(html_head="<head></head>", prettify=False)
+    )
     actual = ser.serialize().text
 
     # Extract the body content between <body> and </body>
@@ -1112,4 +1152,4 @@ def test_html_inline_group_single_part():
     body_content = actual[start:end].strip()
 
     # Check that the single part content is present
-    assert 'Single' in body_content
+    assert "Single" in body_content
