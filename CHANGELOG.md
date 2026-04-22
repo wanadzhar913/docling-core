@@ -1,3 +1,11 @@
+## [v2.74.1](https://github.com/docling-project/docling-core/releases/tag/v2.74.1) - 2026-04-22
+
+### Fix
+
+* Refine ImageRef URI handling ([#595](https://github.com/docling-project/docling-core/issues/595)) ([`2087d0f`](https://github.com/docling-project/docling-core/commit/2087d0f362619be71df50ad4bf3d0a975e15108b))
+* **doclang:** Default DoclangDeserializer to page 1 ([#590](https://github.com/docling-project/docling-core/issues/590)) ([`048f172`](https://github.com/docling-project/docling-core/commit/048f1720f6b7cbe939974918c93c44d0bebd6f4b))
+* Refine remote filename handling ([#591](https://github.com/docling-project/docling-core/issues/591)) ([`473fbac`](https://github.com/docling-project/docling-core/commit/473fbacfb938eaad4ff2136ff3860043473e3595))
+
 ## [v2.74.0](https://github.com/docling-project/docling-core/releases/tag/v2.74.0) - 2026-04-17
 
 ### Feature
